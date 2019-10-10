@@ -40,7 +40,7 @@ describe('Articles Endpoints', function() {
       const testUsers = makeUsersArray();
       const testArticles = makeArticlesArray();
 
-      beforeEach('insert articles', () => {
+      before('insert articles', () => {
         return db
           .into('blogful_users')
           .insert(testUsers)
@@ -57,7 +57,7 @@ describe('Articles Endpoints', function() {
           .expect(200)
           .then(res=>expect(testArticles).to.eql(res.body.map(article=>({
             ...article,
-           // date_published: new Date(article.date_published)
+            date_published: new Date(article.date_published)
           }))))
       })
     })
@@ -179,7 +179,7 @@ describe('Articles Endpoints', function() {
           expect(res.body.style).to.eql(newArticle.style)
           expect(res.body.content).to.eql(newArticle.content)
           expect(res.body).to.have.property('id')
-          expect(res.headers.location).to.eql(`/api/articles/${res.body.id}`)
+          expect(res.headers.location).to.eql(`/articles/${res.body.id}`)
           const expected = new Date().toLocaleString('en', { timeZone: 'UTC' });
           const actual = new Date(res.body.date_published).toLocaleString();
           expect(actual).to.eql(expected)

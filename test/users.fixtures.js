@@ -16,9 +16,9 @@ function makeUsersArray() {
       password: 'secret',
       nickname: 'Pippin'
     }
-  ]
+  ];
 }
 
 module.exports = {
   makeUsersArray
-}
+};

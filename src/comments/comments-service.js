@@ -34,4 +34,4 @@ const CommentsService = {
   },
 }
 
-module.exports = CommentsService
+module.exports = CommentsService;
